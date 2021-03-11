@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2019/5/17
-# @Author  : Godder
-# @Github  : https://github.com/WangGodder
 from torch import nn
 from ..utils import calc_map_k, calc_precisions_topn, calc_precisions_hash
 from torch.utils.data import DataLoader
