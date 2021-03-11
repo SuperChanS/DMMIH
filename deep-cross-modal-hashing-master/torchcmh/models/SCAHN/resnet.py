@@ -195,14 +195,6 @@ class ResNet(BasicModule):
 
         self.softmax = nn.LogSoftmax(dim=1)
         self.avgpool = nn.AvgPool2d(1)
-        self.ca = ChannelAttention(2048)
-        self.sa = SpatialAttention()
-
-        # self.pan = PAN()
-        # self.fpa1 = FPA(64)
-        # self.fpa2 = FPA(128)
-        # self.fpa3 = FPA(256)
-        # self.fpa4 = FPA(512)
 
     def _make_layer(self, block, planes, blocks, stride=1):
         downsample = None
@@ -308,54 +300,6 @@ class ResNet(BasicModule):
 
         middle_hash = [result1, result2]
         y = self.weight(*middle_hash)
-        # print(y.shape)
-        # result = torch.cat((result1, result2), 1)
-        # result = self.fc_concat(result)
-        # f2 = self.layer2(f1_temp)
-        # f2_temp = self.fpa2(f2)
-        # v2 = self.global_avgpool(f2_temp)
-        # f3 = self.layer3(f2_temp)
-        # f3_temp = self.fpa3(f3)
-        # v3 = self.global_avgpool(f3_temp)
-        # f4 = self.layer4(f3_temp)
-        # f4_temp = self.fpa4(f4)
-        # v4 = self.global_avgpool(f4_temp)
-        ###原来的
-        # f = self.__feature_maps(x)
-        # f1 = self.layer1(f)
-        # v1 = self.global_avgpool(f1)
-        # f2 = self.layer2(f1)
-        # v2 = self.global_avgpool(f2)
-        # print(v2.shape)
-        # f3 = self.layer3(f2)
-        # v3 = self.global_avgpool(f3)
-        # f4 = self.layer4(f3)
-        # v4 = self.global_avgpool(f4)
-
-        # v1 = v1.view(v1.size(0), -1)
-        # v2 = v2.view(v2.size(0), -1)
-        # v3 = v3.view(v3.size(0), -1)
-        # v4 = v4.view(v4.size(0), -1)
-
-        # v1 = self.BN1(v1)
-        # v2 = self.BN2(v2)
-        # v3 = self.BN3(v3)
-        # v4 = self.BN4(v4)
-        #
-        # y1 = self.classifier1(v1)  # type: torch.Tensor
-        # y2 = self.classifier2(v2)  # type: torch.Tensor
-        # y3 = self.classifier3(v3)  # type: torch.Tensor
-        # y4 = self.classifier4(v4)  # type: torch.Tensor
-        #
-        # y1 = torch.tanh(y1)
-        # y2 = torch.tanh(y2)
-        # y3 = torch.tanh(y3)
-        # y4 = torch.tanh(y4)
-        #
-        # middle_hash = [y1, y2, y3, y4]
-        # middle_hash = middle_hash[4 - self.fusion_num:]
-        #
-        # y = self.weight(*middle_hash)
 
 
         if self.training is False:
